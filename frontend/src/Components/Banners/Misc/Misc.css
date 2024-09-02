@@ -1,0 +1,39 @@
+.misc-banner {
+  max-width: 100%;
+  height: 40vh;
+  display: flex;
+  margin: auto;
+  padding: 0px 140px;
+  padding-top: 100px;
+  margin-bottom: 150px;
+  background: linear-gradient(180deg, #e7df64 0%, #e1ffea22 60%);
+}
+
+.misc-banner-adv {
+  display: column;
+  position: absolute;
+  margin-top: 150px;
+}
+
+.misc-banner-img {
+  position: absolute;
+  margin-left: 1300px;
+  margin-top: -90px;
+}
+
+.misc-banner-img img {
+  max-width: 100%;
+}
+
+.misc-banner-logo {
+  margin-left: 360px;
+  margin-top: -200px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 20px;
+}
+
+.misc-banner-logo img {
+  width: 450px;
+}

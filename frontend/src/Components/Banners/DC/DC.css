@@ -1,0 +1,36 @@
+.dc-banner {
+  max-width: 100%;
+  height: 40vh;
+  display: flex;
+  margin: auto;
+  padding: 0px 140px;
+  padding-top: 100px;
+  margin-bottom: 150px;
+  background: linear-gradient(180deg, #5e79f0 0%, #e1ffea22 60%);
+}
+
+.dc-banner-adv {
+  display: column;
+  position: absolute;
+  margin-top: 150px;
+}
+
+.dc-banner-img {
+  position: absolute;
+  margin-left: 1250px;
+  margin-top: -90px;
+  height: 400px;
+}
+
+.dc-banner-img img {
+  max-width: 100%;
+}
+
+.dc-banner-logo {
+  margin-left: 645px;
+  margin-top: -20px;
+}
+
+.dc-banner-logo img {
+  width: 300px;
+}

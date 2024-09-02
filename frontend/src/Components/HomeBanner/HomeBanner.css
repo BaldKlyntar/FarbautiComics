@@ -1,0 +1,48 @@
+.homebanner {
+  max-width: 100%;
+  height: 60vh;
+  display: flex;
+  margin: auto;
+  padding: 0px 140px;
+  padding-top: 100px;
+  margin-bottom: 150px;
+  background: linear-gradient(180deg, #797579 0%, #e1ffea22 60%);
+}
+
+.homebanner-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.homebanner-right h1 {
+  color: #171717;
+  font-size: 60px;
+  font-weight: 450;
+}
+
+.homebanner-right button {
+  width: 282px;
+  height: 60px;
+  border-radius: 35px;
+  background: #171717;
+  border: none;
+  color: white;
+  font-size: 22px;
+  font-weight: 500;
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+.homebanner-left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 1px;
+}
+
+.homebanner-left img {
+  padding-right: 200px;
+}
