@@ -1,0 +1,43 @@
+.marvel-banner {
+  height: 25vh;
+  display: flex;
+  margin: auto;
+  background: linear-gradient(180deg, #da4b4b 0%, #e1ffea22 100%);
+  justify-content: space-between;
+
+
+}
+
+.marvel-banner-adv{
+  width: fit-content;
+  margin-left: 50px;
+  height: fit-content;
+  align-self: flex-end;
+
+}
+
+.marvel-banner-adv p{
+  color: gray;
+}
+
+.marvel-banner-logo{
+  width: fit-content;
+  height: fit-content;
+  align-self: center;
+}
+
+.marvel-banner-logo img{
+  width: 300px;
+}
+
+.marvel-banner-img{
+
+  width: fit-content;
+  height: fit-content;
+  margin-right: 50px;
+}
+
+.marvel-banner-img img{
+  width: 280px;
+}
+

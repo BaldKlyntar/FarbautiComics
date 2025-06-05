@@ -1,0 +1,41 @@
+.animanga-banner {
+  height: 25vh;
+  display: flex;
+  margin: auto;
+  background: linear-gradient(180deg, #9b9b9b 0%, #e1ffea22 100%);
+  justify-content: space-between;
+
+
+}
+
+.animanga-banner-adv{
+  width: fit-content;
+  margin-left: 50px;
+  height: fit-content;
+  align-self: flex-end;
+
+}
+
+.animanga-banner-adv p{
+  color: gray;
+}
+
+.animanga-banner-logo{
+  width: fit-content;
+  height: fit-content;
+  align-self: center;
+}
+
+.animanga-banner-logo img{
+  width: 150px;
+}
+
+.animanga-banner-img{
+  width: fit-content;
+  height: fit-content;
+  margin-right: 50px;
+}
+
+.animanga-banner-img img{
+  width: 230px;
+}

@@ -1,0 +1,79 @@
+import express from 'express';
+import mongoose from 'mongoose';
+import * as dotenv from 'dotenv';
+import morgan from 'morgan';
+import cookieParser from 'cookie-parser'
+import 'express-async-errors';
+
+dotenv.config();
+const app = express();
+
+if(process.env.NODE_ENV === 'development'){
+    app.use(morgan('dev'));
+}
+
+const port = process.env.PORT || 5100
+
+try {
+    await mongoose.connect(process.env.MONGO_URL);
+    app.listen(port, () => {
+        console.log(`server running on PORT ${port}...`);
+    });
+} catch (error){
+    console.log(error);
+    process.exit(1);
+}
+
+app.use(cookieParser());
+app.use(express.json());
+
+// routers
+
+import productRouter from './Routes/productRouter.js'
+import authRouter from './Routes/authRouter.js'
+import userRouter from './Routes/userRouter.js'
+
+
+
+
+// middleware
+
+import errorHandlerMiddleware from './Middleware/errorHandlerMiddleware.js'
+import { authenticateUser } from './Middleware/authMiddleware.js';
+
+//public
+
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+import path from "path";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+app.use(express.static(path.resolve(__dirname, "./public/uploads")));
+
+
+
+// Routes
+
+app.use('/api/v1/products',  productRouter);
+app.use('/api/v1/users', authenticateUser, userRouter);
+app.use('/api/v1/auth', authRouter);
+
+
+
+// NOT FOUND 
+app.use('*', (req, res) => {
+    res.status(404).json({ msg: 'not found' })
+})
+
+app.use(errorHandlerMiddleware);
+
+// INTERNAL SERVER ERROR
+
+app.use((err, req, res, next) => {
+
+    console.log(err)
+    res.status(500).json({msg: 'something went wrong'})
+
+})
+

@@ -1,0 +1,42 @@
+.dc-banner {
+  height: 25vh;
+  display: flex;
+  margin: auto;
+  background: linear-gradient(180deg, #5e79f0 0%, #e1ffea22 100%);
+  justify-content: space-between;
+
+
+}
+
+.dc-banner-adv{
+  width: fit-content;
+  margin-left: 50px;
+  height: fit-content;
+  align-self: flex-end;
+
+}
+
+.dc-banner-adv p{
+  color: gray;
+}
+
+.dc-banner-logo{
+  width: fit-content;
+  height: fit-content;
+  align-self: center;
+}
+
+.dc-banner-logo img{
+  width: 200px;
+}
+
+.dc-banner-img{
+
+  width: fit-content;
+  height: fit-content;
+  margin-right: 50px;
+}
+
+.dc-banner-img img{
+  width: 290px;
+}
