@@ -102,7 +102,7 @@ export const addWishlist = async (req, res) => {
         user.wishlist.push(product._id);
         await user.save();
 
-        res.status(StatusCodes.OK).json({msg: 'product added to Wishlist'})
+        res.status(StatusCodes.OK).json({msg: 'Product added to Wishlist'})
 
     }
     else {

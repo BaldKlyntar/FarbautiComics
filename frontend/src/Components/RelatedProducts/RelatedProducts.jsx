@@ -31,6 +31,8 @@ export const RelatedProducts = (props) => {
 
     fetchRelatedProducts();
   }, []);
+
+  
   return (
     <div className="relatedproducts">
         <h1>Related Products</h1>

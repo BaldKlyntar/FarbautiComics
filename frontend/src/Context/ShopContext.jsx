@@ -28,6 +28,26 @@ const ShopContextProvider = (props) => {
           fetchAllProducts();
         }, []);
 
+        // Productos populares
+
+        const [trendingProducts, setTrendingProducts] = useState([]);
+
+        useEffect(() => {
+          const fetchTrendingProducts = async () => {
+            try {
+              const {data} = await customFetch.get('/products/trending');
+              setTrendingProducts(data.products);
+
+            } catch (error){
+              console.log(error)
+            } 
+          };
+
+          fetchTrendingProducts();
+
+          
+        }, [])
+
 
         // Eliminar producto 
 
@@ -84,7 +104,7 @@ const ShopContextProvider = (props) => {
 
       try {
 
-        await customFetch.post(`/users/addtowishlist/${productId}`)
+        await customFetch.post(`/users/addtowishlist/${productId}`),
         toast.success('Product added to wishlist')
       } catch (error) {
         toast.error(error?.response?.data?.msg);
@@ -95,67 +115,7 @@ const ShopContextProvider = (props) => {
       
     }
 
-    // Lista de deseos
-
-    const [wishProducts, setwishProducts] = useState([]);
-
-
-    useEffect(() => {
-        const fetchwishProducts = async () => {
-          try {
-            const { data } = await customFetch.get('/users/getwishlist');
-
-            setwishProducts(data.wishlist);
-      
-          } catch (error) {
-            console.log(error);
-          } 
-        };
-      
-        fetchwishProducts();
-      }, []);
-
-    // Lista de Favoritos
-
-    const [favoriteProducts, setfavoriteProducts] = useState([]);
-
-
-    useEffect(() => {
-        const fetchfavoriteProducts = async () => {
-          try {
-            const { data } = await customFetch.get('/users/getfavorites');
-
-            setfavoriteProducts(data.favorites);
-      
-          } catch (error) {
-            console.log(error);
-          } 
-        };
-      
-        fetchfavoriteProducts();
-      }, []);
-
-
-      // Biblioteca
-
-      const [readProducts, setreadProducts] = useState([]);
-
-
-      useEffect(() => {
-          const fetchreadProducts = async () => {
-            try {
-              const { data } = await customFetch.get('/users/getreadhistory');
-  
-              setreadProducts(data.readHistory);
-        
-            } catch (error) {
-              console.log(error);
-            } 
-          };
-        
-          fetchreadProducts();
-        }, []);
-
+   
       
 
 
@@ -163,14 +123,12 @@ const ShopContextProvider = (props) => {
 
     const contextValue = {
       all_products,
+      trendingProducts,
       deleteProduct,
       isLoading,
       addToFavorites,
       addToLibrary,
       addToWishlist,
-      favoriteProducts, 
-      readProducts, 
-      wishProducts
     };
 
     return(

@@ -10,7 +10,7 @@ const UserCollection = (props) => {
 
 
   const imageUrl = `http://localhost:5100/${props.image.replace("public\\uploads\\", "")}`; // Solucion temporal
-  //      <Link to={`/product/${props.id}`}><img onClick={window.scrollTo(0, 0)} src={imageUrl} alt="" /></Link>
+  
   return (
     <div className="user-collection">
         <div className="user-collection-top">

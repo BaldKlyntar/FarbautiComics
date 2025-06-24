@@ -1,29 +1,15 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import './Trending.css'
 //import trending from '../../assets/trending'
 import Item from '../Item/Item'
 import customFetch from '../../Utils/customFetch'
+import { ShopContext } from '../../Context/ShopContext'
 
 
 const Trending = () => {
 
-  const [trendingProducts, setTrendingProducts] = useState([]);
 
-
-  useEffect(() => {
-    const fetchTrendingProducts = async () => {
-      try {
-        const { data } = await customFetch.get('/products/trending');
-        setTrendingProducts(data.products);
-      } catch (error) {
-        console.log(error)
-
-      } 
-    };
-
-    fetchTrendingProducts();
-  }, []);
-
+const{trendingProducts} = useContext(ShopContext)
   
   return (
     <div className="trending">
