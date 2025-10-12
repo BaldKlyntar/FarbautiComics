@@ -9,7 +9,6 @@ export const Animanga = () => {
     <div className="animanga-banner">
         <div className="animanga-banner-adv">
             <h1>Animanga Collection</h1>
-            <p>Explore our vast selection of classic and modern comic books.</p>
         </div>
         <div className="animanga-banner-logo">
             <img src={animanga_logo} alt="" />

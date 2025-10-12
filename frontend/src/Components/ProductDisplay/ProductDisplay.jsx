@@ -5,6 +5,7 @@ import { IoBookOutline, IoBook } from "react-icons/io5";
 import { Link } from 'react-router-dom';
 import { ShopContext } from '../../Context/ShopContext';
 import { toast } from 'react-toastify';
+import { FaShoppingCart } from "react-icons/fa";
 
 
 export const ProductDisplay = (props) => {
@@ -53,15 +54,21 @@ export const ProductDisplay = (props) => {
         <div className="product-display-header-specs">
           <div>
               <h1>{product.title}</h1>
-              <h2>${product.price}</h2>
+              <div className="product-display-header-cart">
+                <div className="product-display-header-price">
+                    <p>${product.price}</p>
+                </div>
+                <div className="product-display-header-button">
+                {isUser?
+                  <button><FaShoppingCart size={25}/></button>
+                  :<Link to='/register'><button><FaShoppingCart/></button></Link>
+                }
+              </div>
+              </div>
+
           </div>
           <div className='product-display-container'>
-            <div className="product-display-header-button">
-              {isUser?
-                <button>Add to Cart</button>
-                :<Link to='/register'><button>Add to Cart</button></Link>
-              }
-            </div>
+
             <div className="product-display-header-hearts">
               <div className="hearts-container">
               <FaHeart size={25}/>

@@ -28,7 +28,7 @@ const BestSellers = () => {
 
   return (
     <div className="bestseller">
-      <h1>New Products</h1>
+      <h1>Nuevos Productos</h1>
       <hr />
       <div className="bestseller-item">
         {newProducts.map((item, i) =>{

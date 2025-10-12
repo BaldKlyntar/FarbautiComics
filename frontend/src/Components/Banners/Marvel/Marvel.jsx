@@ -9,7 +9,6 @@ export const Marvel = () => {
     <div className="marvel-banner">
         <div className="marvel-banner-adv">
             <h1>Marvel Comics Collection</h1>
-            <p>Explore our vast selection of classic and modern comic books.</p>
         </div>
         <div className="marvel-banner-logo">
             <img src={marvel_logo} alt="" />

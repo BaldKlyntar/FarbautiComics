@@ -13,7 +13,7 @@ const{trendingProducts} = useContext(ShopContext)
   
   return (
     <div className="trending">
-      <h1>Trending</h1>
+      <h1>Productos Populares</h1>
       <hr />
       <div className="trending-collection">
           {trendingProducts.map((item, i) => {

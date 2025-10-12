@@ -37,7 +37,7 @@ const Footer = () => {
       </div>
       <div className="footer-copyright">
           <hr color='grey'/>
-          <p>© 2024 Farbauti Comics. All rights reserved.</p>
+          <p>© 2025 Farbauti Comics. All rights reserved.</p>
       </div>
 </div>
   )

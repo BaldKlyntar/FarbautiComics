@@ -35,7 +35,7 @@ export const RelatedProducts = (props) => {
   
   return (
     <div className="relatedproducts">
-        <h1>Related Products</h1>
+        <h1>Productos Relacionados</h1>
         <hr />
         <div className="relatedproducts-item">
             {relatedProducts.map((item, i) =>{

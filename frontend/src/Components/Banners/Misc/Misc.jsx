@@ -9,7 +9,6 @@ export const Misc = () => {
     <div className="misc-banner">
         <div className="misc-banner-adv">
             <h1>Miscellaneous Collection</h1>
-            <p>Explore our vast selection of classic and modern comic books.</p>
         </div>
         <div className="misc-banner-logo">
             <img src={dh_logo} alt="" />
