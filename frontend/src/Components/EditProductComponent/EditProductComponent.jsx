@@ -17,23 +17,23 @@ const EditProductComponent = (props) => {
           </label>
       </div>
       <div className="edit-product-elements">
-      <h1>Edit Product</h1>
+      <h1>Editar Producto</h1>
         <div className="edit-product-container">
           <div className="edit-product-itemfield">
-            <p>Product Title</p>
+            <p>Titulo</p>
             <input type="text" name='name' placeholder={product.title} />
           </div>
           <div className="edit-product-itemfield">
-            <p>Product Price</p>
+            <p>Precio</p>
             <input type="text" name='price' placeholder={product.price} />
           </div>
           <div className="edit-product-itemfield">
-            <p>Category</p>
+            <p>Categoria</p>
             <select   name="category" className='add-product-selector' defaultValue={product.category}>
               <option value=""></option>
               <option value="marvel">Marvel</option>
               <option value="dc">DC</option>
-              <option value="miscellaneous">Miscellaneous</option>
+              <option value="miscellaneous">Misceláneo</option>
               <option value="animanga">Animanga</option>
             </select>
           </div>
@@ -41,32 +41,32 @@ const EditProductComponent = (props) => {
         </div>
         <div className="edit-product-container">
           <div className="edit-product-itemfield">
-              <p>Artist/Writer</p>
+              <p>Artista/Escritor</p>
               <input type="text" name='artist' placeholder={product.artistWriter} />
           </div>
           <div className="edit-product-itemfield">
-            <p>Cover Artist</p>
+            <p>Portada</p>
             <input type="text" name='cover' placeholder={product.coverArtist} />
           </div>
         </div>
         <div className="edit-product-container">
 
           <div className="edit-product-itemfield">
-            <p>Publisher</p>
+            <p>Editorial</p>
             <input type="text" name='publisher' placeholder={product.publisher} />
           </div>
           <div className="edit-product-itemfield">
-            <p>Country/Region of Manufacture</p>
+            <p>Region de Manufactura</p>
             <input type="text" name='country' placeholder={product.countryManufacture} />
           </div>
         </div>
         <div className="edit-product-container">
           <div className="edit-product-itemfield">
-            <p>Language</p>
+            <p>Idioma</p>
             <input type="text" name='language' placeholder={product.language} />
           </div>
           <div className="edit-product-itemfield">
-            <p>Format</p>
+            <p>Formato</p>
             <input type="text" name='format' placeholder={product.format} />
           </div>
 
@@ -74,25 +74,25 @@ const EditProductComponent = (props) => {
         <div className="edit-product-container">
 
           <div className="edit-product-itemfield">
-            <p>Style</p>
+            <p>Estilo</p>
             <input type="text" name='cover' placeholder={product.style} />
           </div>
           <div className="edit-product-itemfield">
-            <p>Genre</p>
+            <p>Genero</p>
             <input type="text" name='genre' placeholder={product.genre} />
           </div>
           <div className="edit-product-itemfield">
-            <p>Type</p>
+            <p>Tipo</p>
             <input type="text" name='type' placeholder={product.type} />
           </div>
         </div>
         <div className="edit-product-container">
           <div className="edit-product-description">
-            <p>Product Description</p>
+            <p>Descripcion</p>
             <input type="text" name='description' placeholder={product.description}/>
           </div>
         </div>
-          <button  className="edit-product-btn">UPDATE</button>
+          <button  className="edit-product-btn">ACTUALIZAR</button>
       </div>
     </div>
   )

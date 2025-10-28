@@ -27,13 +27,13 @@ const AllProductComponent = () => {
   
   return (
     <div className="list-product">
-    <h1>Product List</h1>
+    <h1>Lista de productos</h1>
     <div className="listproduct-format-main">
-      <p>Products</p>
-      <p>Title</p>
-      <p>Price</p>
-      <p>Category</p>
-      <p>Actions</p>
+      <p>Productos</p>
+      <p>Titulo</p>
+      <p>Precio</p>
+      <p>Categoria</p>
+      <p>Acciones</p>
     </div>
     <div className="listproduct-allproducts">
       <hr />
@@ -44,8 +44,8 @@ const AllProductComponent = () => {
           <p>${product.price}</p>
           <p>{product.category}</p>
           <div className="listproduct-allproducts-btn">
-            <Link to={`/admin/edit-product/${product.id}`}><button>Edit</button></Link>
-            <button onClick={()=>{deleteProduct(product._id)}}>Remove</button>
+            <Link to={`/admin/edit-product/${product.id}`}><button>Editar</button></Link>
+            <button onClick={()=>{deleteProduct(product._id)}}>Eliminar</button>
           </div>
         </div>
         <hr />

@@ -13,18 +13,19 @@ const ShopContextProvider = (props) => {
 
         //Todos los productos
 
-        useEffect(() => {
           const fetchAllProducts = async () => {
             try {
+              setIsLoading(true);
               const { data } = await customFetch.get('/products/allproducts');
               setAll_Product(data.products);
             } catch (error) {
                 console.log(error)
             } finally {
-              setIsLoading(false); // Termina la carga
+              setIsLoading(false); 
             }
           };
       
+        useEffect(() => {
           fetchAllProducts();
         }, []);
 
@@ -70,7 +71,55 @@ const ShopContextProvider = (props) => {
       try {
 
         await customFetch.post(`/users/addtofavorites/${productId}`)
-        toast.success('Product added to favorites')
+        toast.success('Product agregado a Favoritos')
+        
+      } catch (error) {
+        toast.error(error?.response?.data?.msg);
+        return error
+        
+        
+      }
+      
+    }
+
+    const removeFavorites = async (productId) => {
+
+      try {
+
+        await customFetch.post(`/users/removefromfavorites/${productId}`)
+        toast.success('Product removido de Favoritos')
+        
+      } catch (error) {
+        toast.error(error?.response?.data?.msg);
+        return error
+        
+        
+      }
+      
+    }
+
+    const removeRead = async (productId) => {
+
+      try {
+
+        await customFetch.post(`/users/removefromread/${productId}`)
+        toast.success('Product removido de la Biblioteca')
+        
+      } catch (error) {
+        toast.error(error?.response?.data?.msg);
+        return error
+        
+        
+      }
+      
+    }
+
+        const removeWishlist = async (productId) => {
+
+      try {
+
+        await customFetch.post(`/users/removefromwishlist/${productId}`)
+        toast.success('Product removido de la Lista de Deseos')
         
       } catch (error) {
         toast.error(error?.response?.data?.msg);
@@ -87,7 +136,7 @@ const ShopContextProvider = (props) => {
       try {
 
         await customFetch.post(`/users/markasread/${productId}`)
-        toast.success('Product mark as read')
+        toast.success('Producto agregado a la Biblioteca')
         
       } catch (error) {
         toast.error(error?.response?.data?.msg);
@@ -105,7 +154,7 @@ const ShopContextProvider = (props) => {
       try {
 
         await customFetch.post(`/users/addtowishlist/${productId}`),
-        toast.success('Product added to wishlist')
+        toast.success('Producto agregado a la Lista de Deseos')
       } catch (error) {
         toast.error(error?.response?.data?.msg);
         return error
@@ -113,6 +162,15 @@ const ShopContextProvider = (props) => {
         
       }
       
+    }
+
+    const viewProduct = async (productId) => {
+      try{
+        await customFetch.post(`/users/addview/${productId}`)
+      }
+      catch(error){
+        return error
+      }
     }
 
    
@@ -129,6 +187,11 @@ const ShopContextProvider = (props) => {
       addToFavorites,
       addToLibrary,
       addToWishlist,
+      viewProduct,
+      fetchAllProducts,
+      removeFavorites,
+      removeRead,
+      removeWishlist
     };
 
     return(

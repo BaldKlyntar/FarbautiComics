@@ -1,9 +1,10 @@
 import mongoose from "mongoose"
-import { PRODUCT_CATEGORY } from '../Utils/Constants.js'
+import { PRODUCT_CATEGORY, GENRE_CATEGORY } from '../Utils/Constants.js'
 const { Schema, Types } = mongoose;
 
 const ProductSchema = new mongoose.Schema(
     {
+        productModel_id:{type: Number, unique: true},
         id:{
             type: Types.ObjectId,
             default: () => new Types.ObjectId()
@@ -43,7 +44,8 @@ const ProductSchema = new mongoose.Schema(
         },
         genre:{
             type:String,
-            default:"action"
+            enum: Object.values(GENRE_CATEGORY),
+            default: GENRE_CATEGORY.ACCION
         },
         format: {
             type:String,

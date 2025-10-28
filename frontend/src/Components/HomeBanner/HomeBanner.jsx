@@ -25,7 +25,7 @@ const HomeBanner = () => {
         <div className="homebanner-left">
             <div className="homebanner-topleft">
                 <div className="homebanner-header">
-                    <p>People's favorite</p>
+                    <p>Favorito de la comunidad</p>
                 </div>
                 <h1>{mostLiked.title}</h1>
                 <div className="homebanner-hearts">
@@ -37,8 +37,8 @@ const HomeBanner = () => {
                 <p>{mostLiked.description}</p>
             </div>
             <div className="homebanner-buttons">
-                <button>Buy Now - ${mostLiked.price}</button>
-                <button>Add to Wishlist</button>
+                <Link to={`/product/${mostLiked.id}`}><button>Comprar por - ${mostLiked.price}</button></Link>
+                <button>Agregar a la lista de deseos</button>
             </div>
         </div>
         <div className="homebanner-right">

@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { useOutletContext } from 'react-router-dom'
-import { PRODUCT_CATEGORY } from '../../../../Utils/Constants'
+import { PRODUCT_CATEGORY, GENRE_CATEGORY } from '../../../../Utils/Constants'
 import './AddProductComponent.css'
 import customFetch from '../../Utils/customFetch'
 import { toast } from 'react-toastify'
@@ -32,18 +32,18 @@ const AddProductComponent = () => {
   const isSubmitting = navigation.state === 'submitting'
   return (
       <Form method= 'post' className="add-product" encType='multipart/form-data'>
-        <h1>Add Product</h1>
+        <h1>Añadir Producto</h1>
         <div className="addproduct-container">
           <div className="addproduct-itemfield">
-            <p>Product Title</p>
+            <p>Titulo</p>
             <input type="text" name='title' placeholder='Type Here' />
           </div>
           <div className="addproduct-itemfield">
-            <p>Product Price</p>
+            <p>Precio</p>
             <input type="text" name='price' placeholder='Type Here' />
           </div>
           <div className="addproduct-itemfield">
-            <p>Category</p>
+            <p>Categoria</p>
             <select   name="category" className='add-product-selector' >
                 {Object.values(PRODUCT_CATEGORY).map((itemValue) => {
                   return(
@@ -57,59 +57,67 @@ const AddProductComponent = () => {
         </div>
         <div className="addproduct-container">
           <div className="addproduct-itemfield">
-            <p>Artist/Writer</p>
+            <p>Artista/Escritor</p>
             <input type="text" name='artistWriter' placeholder='Type Here' />
           </div>
           <div className="addproduct-itemfield">
-            <p>Cover Artist</p>
+            <p>Portada</p>
             <input type="text" name='coverArtist' placeholder='type here' />
           </div>
           <div className="addproduct-itemfield">
-            <p>Publisher</p>
+            <p>Editorial</p>
             <input type="text" name='publisher' placeholder='Marvel Comics, Image Comics, etc' />
           </div>
         </div>
         <div className="addproduct-container">
           <div className="addproduct-itemfield">
-            <p>Country/Region of Manufacture</p>
+            <p>Region de Manufactura</p>
             <input type="text" name='countryManufacture' placeholder='Type Here' />
           </div>
           <div className="addproduct-itemfield">
-            <p>Language</p>
+            <p>Idioma</p>
             <input type="text" name='language' placeholder='type here' />
           </div>
           <div className="addproduct-itemfield">
-            <p>Format</p>
+            <p>Formato</p>
             <input type="text" name='format' placeholder='TPB, Issue, etc' />
           </div>
         </div>
         <div className="addproduct-container">
           <div className="addproduct-itemfield">
-            <p>Type</p>
+            <p>Tipo</p>
             <input type="text" name='type' placeholder='Graphic Novel, Drama, etc' />
           </div>
           <div className="addproduct-itemfield">
-            <p>Style</p>
+            <p>Estilo</p>
             <input type="text" name='style' placeholder='Color, Black and White' />
           </div>
           <div className="addproduct-itemfield">
-            <p>Genre</p>
-            <input type="text" name='genre' placeholder='Action, Comedy, etc' />
+            <p>Genero</p>
+            <select   name="genre" className='add-product-selector' >
+                {Object.values(GENRE_CATEGORY).map((itemValue) => {
+                  return(
+                    <option key={itemValue} value= {itemValue}>
+                      {itemValue}
+                    </option>
+                  );
+                })}
+            </select>
           </div>
         </div>
         <div className="addproduct-container">
           <div className="addproduct-description">
-            <p>Product Description</p>
-            <input type="text" name='description'/>
+            <p>Descripcion</p>
+            <textarea type="text" name='description' />
           </div>
         </div>
         <label htmlFor="image">
             <div className="area">
-              <p>Image</p>
+              <p>Imagen</p>
               <input  type="file" name='image' id='image' accept= 'image/*'/>
             </div>
           </label>
-          <button type='submit' disabled={isSubmitting}  className="addproduct-btn">{isSubmitting ? 'Adding Product...' : 'ADD'}</button>
+          <button type='submit' disabled={isSubmitting}  className="addproduct-btn">{isSubmitting ? 'Adding Product...' : 'AÑADIR'}</button>
       </Form>
   )
 }

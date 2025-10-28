@@ -5,13 +5,39 @@ import { UnauthenticatedError } from '../Errors/customErrors.js'
 import { createJWT } from '../Utils/tokenUtils.js'
 
 export const register = async (req, res) => {
-    const isFirstAccount = await User.countDocuments() == 0
-    req.body.role = isFirstAccount?'admin':'user'
 
-    const hashedPassword = await hashPassword(req.body.password)
-    req.body.password = hashedPassword
-    const user = await User.create(req.body)
-    res.status(StatusCodes.CREATED).json({ msg: 'user created' })
+    try {
+
+        const existingUser = await User.findOne({email: req.body.email});
+        if(existingUser){
+            return res.status(StatusCodes.BAD_REQUEST).json({msg: 'Correo ya registrado'})
+        }
+
+        const isFirstAccount = await User.countDocuments() === 0;
+        req.body.role = isFirstAccount ? 'admin' : 'user';
+
+        const hashedPassword = await hashPassword(req.body.password);
+        req.body.password = hashedPassword;
+
+        const lastUser = await User.findOne().sort({ userModel_id: -1});
+        const newId = lastUser ? lastUser.userModel_id + 1 : 1;
+
+        const user = await User.create({
+            ...req.body,
+            userModel_id: newId
+        });
+
+        res.status(StatusCodes.CREATED).json({
+            msg: 'Usuario registrado correctamente',
+            userModel_id: user.userModel_id
+        })
+        
+    } catch (error) {
+
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ msg: 'Error al registrar el usuario'});
+        console.log(error)
+        
+    }
 
 
 }

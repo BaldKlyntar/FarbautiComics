@@ -21,9 +21,6 @@ const ProfilePageComponent = () => {
 
     const { user } = useLoaderData();
 
-
-
-
   return (
 
     <div className="profile">
@@ -36,15 +33,15 @@ const ProfilePageComponent = () => {
         <div className="profile-top-right">
           <div className="profile-top-right-numbers">
             <h2>{user.readHistory.length}</h2>
-            <p>Comics read</p>
+            <p>Biblioteca</p>
           </div>
           <div className="profile-top-right-numbers">
             <h2>{user.favorites.length}</h2>
-            <p>Favorites</p>
+            <p>Favoritos</p>
           </div>
           <div className="profile-top-right-numbers">
             <h2>{user.wishlist.length}</h2>
-            <p>Wishlist</p>
+            <p>Lista de deseos</p>
           </div>
         </div>
       </div>

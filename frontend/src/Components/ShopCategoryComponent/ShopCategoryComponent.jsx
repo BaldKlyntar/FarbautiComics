@@ -1,12 +1,29 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext, useMemo, useState} from 'react'
 import './ShopCategoryComponent.css'
 import { ShopContext } from '../../Context/ShopContext'
 import Item from '../Item/Item'
+import { IoIosArrowForward } from "react-icons/io";
+import { Form } from 'react-router-dom';
 
 const ShopCategoryComponent = (props) => {
 
     const{all_products} = useContext(ShopContext)
-    const [maxProducts, setMaxProducts] = useState(15)
+    const [maxProducts, setMaxProducts] = useState(15);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [selectedFormats, setSelectedFormats] = useState([]);
+    const [priceRange, setPriceRange] = useState({ min: '', max: '' });
+
+  const handleFormatChange = (format) => {
+    setSelectedFormats((prev) =>
+      prev.includes(format)
+        ? prev.filter((f) => f !== format)
+        : [...prev, format]
+    );
+  };
+
+  const handlePriceChange = (field, value) => {
+  setPriceRange((prev) => ({ ...prev, [field]: value }));
+  };
   
     const renderBanner = () => {
       if (typeof props.banner === 'string') {
@@ -17,12 +34,23 @@ const ShopCategoryComponent = (props) => {
         return <div className='shop-category-banner-img'>{props.banner}</div>;
       }
     };
-  
+
+    const filteredProducts = useMemo(() => {
+      return all_products.filter((item) => item.category === props.category).filter((item) => 
+      item.title.toLowerCase().includes(searchTerm.toLowerCase()))
+      .filter((item) => selectedFormats.length > 0 ? selectedFormats.includes(item.format) : true)
+      .filter((item) => {
+        const price = item.price || 0;
+        const min = priceRange.min ? parseFloat(priceRange.min) : 0;
+        const max = priceRange.max ? parseFloat(priceRange.max) : Infinity;
+        return price >= min && price <= max;
+
+      })
+    }, [all_products, props.category, searchTerm, selectedFormats, priceRange])
+
     const handleLoadMore = () => {
-      setMaxProducts(prevCount => prevCount + 12)
+      setMaxProducts(prevCount => prevCount + 10)
     }
-  
-    const filteredProducts = all_products.filter(Item => Item.category === props.category)
 
 
 
@@ -33,41 +61,59 @@ const ShopCategoryComponent = (props) => {
         <hr />
       </div>
       <div className="shop-category-content">
-        <div className="shop-category-filters">
-            <div className="filter-top">
-                <h3>Filters</h3>
-                <div className="filter-search">
-                  <p>Search</p>
-                  <input type="text" />
-                </div>
-            </div>
+        <Form
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}>
+          <div className="shop-category-filters">
+              <div className="filter-top">
+                  <h3>Filtros</h3>
+                  <div className="filter-search">
+                    <p>Buscar</p>
+                    <input type="text"
+                      placeholder='Buscar por titulo'
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}/>
+                  </div>
+              </div>
 
-            <div className="filter-bottom">
-                <hr />
-                <h4>Format</h4>
-                <div className="filter-checkbox">
-                  <div className="filter-checkbox-option">
-                    <input type="checkbox" name="" id=""/><p>Issue</p>
+              <div className="filter-bottom">
+                  <hr />
+                  <h4>Formato</h4>
+                  <div className="filter-checkbox">
+                {['Revista', 'Tapa blanda', 'Omnibus', 'Tapa dura'].map((format) => (
+                  <div key={format} className="filter-checkbox-option">
+                    <input
+                      type="checkbox"
+                      id={format}
+                      checked={selectedFormats.includes(format)}
+                      onChange={() => handleFormatChange(format)}
+                    />
+                    <label htmlFor={format}>{format}</label>
                   </div>
-                  <div className="filter-checkbox-option">
-                    <input type="checkbox" /><p>TPB</p>
+                ))}
                   </div>
-                  <div className="filter-checkbox-option">
-                    <input type="checkbox" name="" id="" /><p>Omnibus</p>
+                  <hr />
+                  <p>Rango de Precio</p>
+                  <div className="filter-price-range">
+                    <input
+                      type="number"
+                      placeholder="Desde"
+                      value={priceRange.min}
+                      onChange={(e) => handlePriceChange('min', e.target.value)}
+                    />
+                    <p>A</p>
+                    <input
+                      type="number"
+                      placeholder="Hasta"
+                      value={priceRange.max}
+                      onChange={(e) => handlePriceChange('max', e.target.value)}
+                    />
                   </div>
-                  <div className="filter-checkbox-option">
-                    <input type="checkbox" name="" id="" /><p>Hard Cover</p>
-                  </div> 
-                </div>
-                <hr />
-                <p>Price Range</p>
-                <div className="filter-price-range">
-                    <select name="" id=""></select> 
-                    <p>To</p>
-                    <select name="" id=""></select>
-                </div>
-            </div>
-        </div>
+              </div>
+          </div>
+        </Form>
+
         <div className="shop-category-comics">
           {filteredProducts.slice(0, maxProducts).map((item, i) => (
             <Item
@@ -79,6 +125,9 @@ const ShopCategoryComponent = (props) => {
               publisher= {item.publisher} />
           ))}
         </div>
+      </div>
+      <div className="shop-category-load-more">
+        <button onClick={handleLoadMore}><IoIosArrowForward size={20}/></button>
       </div>
     </div>
   )

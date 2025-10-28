@@ -11,10 +11,10 @@ const Hero1 = () => {
           <img src={Venom_hero} alt="" />
       </div>
       <div className="hero-right">
-          <h2>Discover the Dark Tales of</h2>
+          <h2>Descubre Nuevas Historias</h2>
           <div>
               <p>Venom</p>
-              <p>Lethal Protector</p>
+              <p>Protector Letal</p>
           </div>
           <Link style={{textDecoration:'none', color: 'white', fontFamily: 'Oswald'}} to='/category/marvel'>
                   <button className="hero-btn">

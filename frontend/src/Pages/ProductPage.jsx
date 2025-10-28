@@ -5,10 +5,11 @@ import { ProductDisplay } from '../Components/ProductDisplay/ProductDisplay'
 import { DescriptionBox } from '../Components/DescriptionBox/DescriptionBox'
 import { RelatedProducts } from '../Components/RelatedProducts/RelatedProducts'
 import { CircleLoader } from 'react-spinners'
+import { useEffect} from 'react'
 
 const ProductPage = () => {
 
-  const {all_products, isLoading} = useContext(ShopContext);
+  const {all_products, isLoading, viewProduct} = useContext(ShopContext);
   const {productId} = useParams();
   const product = all_products.find((e) => e.id === productId);
 
@@ -19,6 +20,12 @@ const ProductPage = () => {
   if (!product) {
     return <div>Product not found</div>;
   }
+
+  useEffect(() => {
+    if(product?.id ){
+      viewProduct(product.id);
+    }
+  }, [product?.id])
 
   
   return (

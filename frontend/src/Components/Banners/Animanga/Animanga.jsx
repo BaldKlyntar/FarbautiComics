@@ -8,7 +8,7 @@ export const Animanga = () => {
   return (
     <div className="animanga-banner">
         <div className="animanga-banner-adv">
-            <h1>Animanga Collection</h1>
+            <h1>Coleccion Animanga</h1>
         </div>
         <div className="animanga-banner-logo">
             <img src={animanga_logo} alt="" />

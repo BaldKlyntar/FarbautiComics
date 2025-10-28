@@ -29,13 +29,13 @@
   background-position: inherit;
   background-repeat: inherit;
   background-attachment: inherit;
-  filter: brightness(0.9) blur(6px); /* Aclarar y aplicar efecto borroso */
+  filter: brightness(0.9) blur(6px); 
   z-index: 1;
 }
 
 .loginsignup-container {
   width: 580px;
-  height: 550px;
+  height: 500px;
   background: white;
   margin: auto;
   padding: 40px 60px;

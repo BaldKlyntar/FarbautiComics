@@ -14,7 +14,9 @@ import {
     removeRead,
     addWishlist,
     getWishlist,
-    removeWishlist
+    removeWishlist,
+    getRecommendedComics,
+    userView
 } from "../Controllers/userController.js";
 import { validateUpdateUserInput } from '../Middleware/validationMiddleware.js';
 import { authorizePermissions } from '../Middleware/authMiddleware.js';
@@ -27,19 +29,21 @@ router.patch('/edit-profile', validateUpdateUserInput, updateUser);
 
 router.post('/addtofavorites/:id', addFavorites);
 router.get('/getfavorites', getFavorites);
-router.delete('/removefromfavorites/:id', removeFavorites);
+router.post('/removefromfavorites/:id', removeFavorites);
 
 router.post('/markasread/:id', addRead);
 router.get('/getreadhistory', getRead);
-router.delete('/removefromread', removeRead);
+router.post('/removefromread/:id', removeRead);
 
 router.post('/addtowishlist/:id', addWishlist);
 router.get('/getwishlist', getWishlist);
-router.delete('/removefromwishlist', removeWishlist);
+router.post('/removefromwishlist/:id', removeWishlist);
 
 router.post('/addtocart', addCart);
 router.get('/getcart', getCart);
 router.delete('/removecart', removeCart);
+router.post('/addview/:id', userView);
+router.post('/recommend-products', getRecommendedComics)
 
 export default router
 

@@ -1,22 +1,21 @@
 .navbar {
   display: flex;
   justify-content: space-around;
-  padding: 16px;
+  padding: 10px;
   box-shadow: 0 1px 3px -2px black;
   align-items: center;
-  position: relative; /* Para asegurarse de que z-index funcione */
-  z-index: 1000; /* Valor alto para estar encima de otros elementos */
+  position: relative;
+  z-index: 1000; 
 }
 
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: 2px;
 }
 
 .nav-logo p {
   color: #171717;
-  font-size: 28px;
+  font-size: 25px;
   font-weight: 400;
 }
 
@@ -157,4 +156,43 @@
   text-decoration: none;
   color: #171717;
   position: relative;
+}
+
+@media (max-width: 970px){
+  .nav-logo p{
+    display: none
+  }
+
+  .nav-menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 35px;
+  color: #171717;
+  font-size: 18px;
+  font-weight: 450;
+}
+
+
+}
+
+@media (max-width: 700px){
+  .nav-logo p{
+    display: none
+  }
+
+  .navbar {
+    display: flex;
+    justify-content: center;
+}
+
+  .nav-logo {
+    justify-self: center;
+  }
+
+  .nav-menu {
+  display: none
+}
+
+
 }

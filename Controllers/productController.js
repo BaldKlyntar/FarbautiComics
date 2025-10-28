@@ -7,8 +7,21 @@ export const getAllProducts = async (req, res) =>{
 }
 
 export const addProduct = async (req, res) =>{
-    const product = await Product.create(req.body);
-    res.status(StatusCodes.CREATED).json({ product });
+    try{
+        const lastProduct = await Product.findOne().sort({productModel_id: -1})
+        const newId = lastProduct ? lastProduct.productModel_id + 1 : 1
+
+        const product = await Product.create({
+            ...req.body,
+            productModel_id: newId
+        })
+        res.status(StatusCodes.CREATED).json({ product });
+
+    } catch (error){
+        res.status(StatusCodes.REQUEST_TIMEOUT)
+    }
+    
+    
 }
 
 

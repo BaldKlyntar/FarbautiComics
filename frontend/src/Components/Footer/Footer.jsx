@@ -16,19 +16,19 @@ const Footer = () => {
               <h1>Farbauti Comics</h1>
           </div>
           <div className="footer-quicklinks">
-              <h1>Quick Links</h1>
+              <h1>Enlaces Rapidos</h1>
               <Link style={{textDecoration: 'none'}} to="/">Principal</Link>
-              <Link style={{textDecoration: 'none'}} to="/register"> Sign up</Link>
+              <Link style={{textDecoration: 'none'}} to="/register"> Registrate</Link>
           </div>
           <div className="footer-categories">
-              <h1>Categories</h1>
+              <h1>Categorias</h1>
               <Link style={{textDecoration: 'none'}} to="/category/marvel">Marvel</Link>
               <Link style={{textDecoration: 'none'}} to="/category/dc"> DC</Link>
-              <Link style={{textDecoration: 'none'}} to="/category/miscellaneous"> Miscellaneous</Link>
+              <Link style={{textDecoration: 'none'}} to="/category/miscellaneous"> Misceláneo</Link>
               <Link style={{textDecoration: 'none'}} to="/category/animanga"> Animanga</Link>
           </div>
           <div className="footer-socials">
-              <h1>Follow us</h1>
+              <h1>Siguenos</h1>
               <a href='https://web.facebook.com/?_rdc=1&_rdr'><FaFacebook color='white'/></a>
               <a href= 'https://www.instagram.com/'><FaInstagram color='white'/></a>
               <a href='https://x.com/?lang=es'><FaTwitter color='white'/></a>

@@ -1,7 +1,9 @@
+import { unique } from '@tensorflow/tfjs';
 import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema(
     {
+        userModel_id: {type: Number, unique: true},
         name:String,
         lastName:String,
         username:String,
@@ -22,6 +24,12 @@ const userSchema = new mongoose.Schema(
         cartData:[{
             type:mongoose.Schema.Types.ObjectId,
             ref:'Product'
+        }],
+        purchases:[{
+
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Product'
+
         }],
         address:{
             type:String,

@@ -8,7 +8,7 @@ export const Misc = () => {
   return (
     <div className="misc-banner">
         <div className="misc-banner-adv">
-            <h1>Miscellaneous Collection</h1>
+            <h1>Coleccion Miscelánea</h1>
         </div>
         <div className="misc-banner-logo">
             <img src={dh_logo} alt="" />

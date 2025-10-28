@@ -11,7 +11,7 @@ const Hero2 = () => {
           <img src={daredevil_hero} alt="" />
       </div>
       <div className="hero1-right">
-          <h2>Fearless. Rentless. Unstoppable</h2>
+          <h2>Nuevos Productos Disponibles</h2>
           <div>
               <p>The Man</p>
               <p>Without Fear</p>

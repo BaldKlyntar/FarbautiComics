@@ -32,31 +32,26 @@ const RegisterComponent = () => {
     <div className="signup">
         <div className="signup-background">
             <Form method='post' className="signup-container">
-                <h1>Join Our Comic Book Community!</h1>
-                <p>Sign up today to unlock exclusive content, discounts,
-                     and a community of fellow comic book enthusiasts.</p>
+                <h1>Registro</h1>
                 <div className="signup-fields">
-                    <input name='name' type="text" placeholder='Name' required />
-                    <input name='lastName' type="text" placeholder='Last Name' required />
+                    <input name='name' type="text" placeholder='Nombre' required />
+                    <input name='lastName' type="text" placeholder='Apellidos' required />
                 </div>
                 <div className="signup-fields">
-                    <input name='username' type="text" placeholder='Username' required />
-                    <input name='password' type="password" placeholder='Password' required />
+                    <input name='username' type="text" placeholder='Nombre de usuario' required />
+                    <input name='password' type="password" placeholder='Contraseña' required />
                 </div>
                 <div className="signup-large-field">
-                    <input name='email' type="email" placeholder= 'Email' required />
+                    <input name='email' type="email" placeholder= 'Correo electronico' required />
                 </div>
                 <div className="signup-large-field">
-                    <input name='address' type="text" placeholder= 'Address' required />
+                    <input name='address' type="text" placeholder= 'Direccion' required />
                 </div>
-                <div className="signup-agree">
-                    <input type="checkbox" name='' id='' />
-                    <p>Subscribe to our NewsLetter!</p>
-                </div>
+
                 <button type='submit' disabled= {isSubmitting}>
-                    {isSubmitting ? 'Signing up...' : 'Sign up'}
+                    {isSubmitting ? 'Registrandote...' : ' Registrarte'}
                 </button>
-                <p className="signup-login">Already have an account? <Link to='/login'>Login here</Link></p>
+                <p className="signup-login">Ya tienes una cuenta? <Link to='/login'>Inicia sesion aqui</Link></p>
             </Form>
         </div>
         

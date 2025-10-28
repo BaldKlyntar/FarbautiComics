@@ -22,13 +22,13 @@ const SideBar = () => {
       <Link to={'/admin/add-product'} style={{textDecoration: "none"}}>
         <div className="sidebar-item">
           <img src={plus_icon} alt="" />
-          <p>Add Product</p>
+          <p>Añadir Producto</p>
         </div>
       </Link>
       <Link to={'/admin/all-products'} style={{textDecoration: "none"}}>
         <div className="sidebar-item">
           <img src={list_icon} alt="" />
-          <p>Product List</p>
+          <p>Lista de Productos</p>
         </div>
       </Link>
     </div>

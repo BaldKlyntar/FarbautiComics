@@ -7,7 +7,7 @@ export const DC = () => {
   return (
     <div className="dc-banner">
         <div className="dc-banner-adv">
-            <h1>DC Comics Collection</h1>
+            <h1>Coleccion DC Comics</h1>
         </div>
         <div className="dc-banner-logo">
             <img src={dc_logo} alt="" />

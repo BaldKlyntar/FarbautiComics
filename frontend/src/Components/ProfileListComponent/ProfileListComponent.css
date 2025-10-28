@@ -32,5 +32,6 @@
 .profile-bottom-collections{
   grid-template-columns: 1fr 1fr 1fr;
   display: grid;
+  margin-bottom: 50px;
 
 }

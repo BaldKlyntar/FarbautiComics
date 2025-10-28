@@ -25,19 +25,17 @@ const LoginComponent = () => {
     <div className="loginsignup">
         <div className="loginsignup-background">
             <Form method = 'post' className="loginsignup-container">
-                <h1>Welcome Back!</h1>
-                <p>Sign up today to unlock exclusive content, discounts,
-                     and a community of fellow comic book enthusiasts.</p>
+                <h1>Bienvenido de Vuelta!</h1>
                 <div className="loginsignup-fields">
-                    <input name='email' type="email" placeholder='Email' />
+                    <input name='email' type="email" placeholder='Correo Electronico' />
                 </div>
                 <div className="loginsignup-password">
-                 <input name='password' type="password" placeholder='Password' />
+                 <input name='password' type="password" placeholder='Contraseña' />
                 </div>
                 <button type='submit' disabled= {isSubmitting}>
-                    {isSubmitting ? 'Logging in...' : 'Log in'}
+                    {isSubmitting ? 'Iniciando Sesion...' : 'Iniciar Sesion'}
                 </button>
-                <p className="loginsignup-login">Dont have an account yet? <Link to='/register'>Sign up here</Link></p>
+                <p className="loginsignup-login">Aun no tienes una cuenta? <Link to='/register'>Registrate aqui</Link></p>
             </Form>
         </div>
         

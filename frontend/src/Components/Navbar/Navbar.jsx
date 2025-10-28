@@ -65,19 +65,20 @@ const Navbar = () => {
         <li className='link' ><Link style={{textDecoration: 'none', color: 'black'}} to='/'>Principal</Link></li>
         <li className='link' ><Link style={{textDecoration: 'none', color:'black'}} to='/category/marvel'>Marvel</Link></li>
         <li className='link' ><Link style={{textDecoration: 'none', color: 'black'}} to='/category/dc'>DC</Link></li>
-        <li className='link' ><Link style={{textDecoration: 'none', color: 'black'}} to='/category/miscellaneous'>Miscellaneous</Link></li>
+        <li className='link' ><Link style={{textDecoration: 'none', color: 'black'}} to='/category/miscellaneous'>Misceláneo</Link></li>
         <li className='link' ><Link style={{textDecoration: 'none', color: 'black'}} to='/category/animanga'>Animanga</Link></li>
+        {/*<li className='link' ><Link style={{textDecoration: 'none', color: 'black'}} to='/forum'>Foro</Link></li>*/}
         <GiVikingShield size={50} className='ham-dropdown' onClick={dropdown_toggle}/>
         </ul>
         <div className="hamburger">
           <ul ref={menuRef} className="ham-menu">
           {!isUser && !isAdmin && (
-            <li onClick={dropdown_toggle}><Link style={{ textDecoration: 'none' }} to='/login'><IoIosLogIn />Log in</Link></li>
+            <li onClick={dropdown_toggle}><Link style={{ textDecoration: 'none' }} to='/login'><IoIosLogIn />Iniciar Sesion</Link></li>
           )}
           {(isUser || isAdmin) && (
             <>
-              <li onClick={dropdown_toggle}><Link style={{ textDecoration: 'none' }} to='/profile'><FaUser />Profile</Link></li>
-              <li onClick={dropdown_toggle}><Link style={{ textDecoration: 'none' }} to='/checkout'><FaShoppingCart />Cart</Link></li>
+              <li onClick={dropdown_toggle}><Link style={{ textDecoration: 'none' }} to='/profile'><FaUser />Perfil</Link></li>
+              <li onClick={dropdown_toggle}><Link style={{ textDecoration: 'none' }} to='/checkout'><FaShoppingCart />Carrito</Link></li>
             </>
           )}
           {isAdmin && (

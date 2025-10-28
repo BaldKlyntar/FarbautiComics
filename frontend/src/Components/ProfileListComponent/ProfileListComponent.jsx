@@ -77,6 +77,8 @@ const ProfileListComponent = (props) => {
 
     const handleDisplayChange = (products) => {
       setDisplayedProducts(products);
+      console.log(products)
+     
 
     }
 
@@ -94,16 +96,16 @@ const ProfileListComponent = (props) => {
       <div className="profile-bottom">
         <div className="profile-bottom-options">
           <button className="bottom-options" onClick={() => handleDisplayChange(readProducts)}>
-              <p>Library ({props.readHistory.length})</p>
+              <p>Biblioteca ({props.readHistory.length})</p>
           </button>
           <button className="bottom-options" onClick={() => handleDisplayChange(favoriteProducts)}>
-              <p>Favorites ({props.favorites.length})</p>
+              <p>Favoritos ({props.favorites.length})</p>
           </button>
           <button className="bottom-options" onClick={() => handleDisplayChange(wishProducts)}>
-              <p>Wishlist ({props.wishlist.length})</p>
+              <p>Lista de deseos ({props.wishlist.length})</p>
           </button>
           <button className="bottom-options" onClick={logoutUser}>
-              <p>Log out</p>
+              <p>Cerrar Sesion</p>
           </button>
         </div>
         {displayedProducts.length === 0 ? 
@@ -112,11 +114,15 @@ const ProfileListComponent = (props) => {
         </div> : 
         <div className="profile-bottom-collections">
             {displayedProducts.map((item, i) => {
+            let type = '';
+            if (displayedProducts === favoriteProducts) type = 'favorites';
+            else if (displayedProducts === wishProducts) type = 'wishlist';
+            else if (displayedProducts === readProducts) type = 'read';
             return <UserCollection key={i} id={item.id} 
             name={item.title} image={item.image} 
             genre={item.genre} artistWriter = {item.artistWriter}
             publisher={item.publisher} hearts={item.hearts}
-            description={item.description}/>
+            description={item.description} type={type}/>
 
             })}
         </div>}

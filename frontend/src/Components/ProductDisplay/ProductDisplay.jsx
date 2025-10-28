@@ -23,6 +23,7 @@ export const ProductDisplay = (props) => {
   const [isWishlistClicked, setIsWishlistClicked] = useState(false);
   const [isFavoritesClicked, setIsFavoritesClicked] = useState(false);
   const [isReadClicked, setIsReadClicked] = useState(false);
+  const [heartsCount, setHeartsCount] = useState(product.hearts)
 
   const handleWishlistClick = () => {
     setIsWishlistClicked(!isWishlistClicked);
@@ -30,10 +31,20 @@ export const ProductDisplay = (props) => {
   };
 
 
-  const handleFavoritesClick = () => {
+  const handleFavoritesClick = async () => {
 
-    setIsFavoritesClicked(!isFavoritesClicked);
-    addToFavorites(product.id)
+    const newFavoriteState = !isFavoritesClicked;
+    setIsFavoritesClicked(newFavoriteState);
+
+    setHeartsCount(prev => newFavoriteState ? prev + 1 : prev - 1);
+
+    const result = await addToFavorites(product.id);
+
+    if (result?.success === false) {
+      setIsFavoritesClicked(!newFavoriteState);
+      setHeartsCount(prev => newFavoriteState ? prev - 1 : prev + 1);
+      toast.error('Error al actualizar favoritos');
+   }
 
     
   };
@@ -72,7 +83,7 @@ export const ProductDisplay = (props) => {
             <div className="product-display-header-hearts">
               <div className="hearts-container">
               <FaHeart size={25}/>
-              <h3>{product.hearts}</h3>
+              <h3>{heartsCount}</h3>
             </div>
         </div>
       </div>
@@ -83,21 +94,21 @@ export const ProductDisplay = (props) => {
               onClick={handleWishlistClick}
             >
                 <FaRegStar size={22} />
-                <h4>Add to Wishlist</h4>
+                <h4>Lista de Deseos</h4>
             </div>
             <div
               className="product-display-widgets-container"
               onClick={handleFavoritesClick}
             >
-              <FaRegHeart size={22} />
-              <h4>Add to Favorites</h4>
+              <FaRegHeart size={22}/>
+              <h4>Favoritos</h4>
             </div>
             <div
               className="product-display-widgets-container"
               onClick={handleReadClick}
             >
               <IoBookOutline size={22} />
-              <h4>Mark as Read</h4>
+              <h4>Leido</h4>
             </div>
           </div>
           :<></>}

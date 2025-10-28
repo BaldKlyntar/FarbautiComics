@@ -8,6 +8,8 @@ import 'express-async-errors';
 dotenv.config();
 const app = express();
 
+
+
 if(process.env.NODE_ENV === 'development'){
     app.use(morgan('dev'));
 }
@@ -76,4 +78,3 @@ app.use((err, req, res, next) => {
     res.status(500).json({msg: 'something went wrong'})
 
 })
-

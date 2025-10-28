@@ -5,17 +5,17 @@ const CheckOutComponent = () => {
   return (
     <div className="cartitems">
         <div className="cartitems-format-main">
-            <p>Products</p>
-            <p>Title</p>
-            <p>Price</p>
-            <p>Quantity</p>
+            <p>Productos</p>
+            <p>Titulo</p>
+            <p>Precio</p>
+            <p>Cantidad</p>
             <p>Total</p>
-            <p>Remove</p>
+            <p>Remover</p>
         </div>
         <hr />
         <div className="cartitems-down">
             <div className="cartitems-total">
-                <h1>Cart Total</h1>
+                <h1>Total</h1>
                 <div>
                     <div className="cartitems-total-item">
                         <p>Subtotal</p>
@@ -23,8 +23,8 @@ const CheckOutComponent = () => {
                     </div>
                     <hr />
                     <div className="cartitems-total-item">
-                        <p>Shipping Fee</p>
-                        <p>Free</p>
+                        <p>Precio de envio</p>
+                        <p>Gratis</p>
                     </div>
                     <hr />
                     <div className="cartitems-total-item">
@@ -32,13 +32,13 @@ const CheckOutComponent = () => {
                         <h3>$</h3>
                     </div>
                 </div>
-                <button>PROCEED TO CHECKOUT</button>
+                <button>COMPRAR</button>
             </div>
             <div className="cartitems-promocode">
-                <p>If you have a promo code, Enter it here</p>
+                <p>Canjea un codigo promocional</p>
                 <div className="cartitems-promobox">
-                    <input type="text" placeholder='promo code' />
-                    <button>Submit</button>
+                    <input type="text" placeholder='Codigo' />
+                    <button>Canjear</button>
                 </div>
             </div>
         </div>
