@@ -12,6 +12,10 @@ const commentSchema = new mongoose.Schema(
         votes:{
             type: Number,
             default: 0
+        },
+        downvotes: {
+            type: Number,
+            default: 0
         }
     }
 )

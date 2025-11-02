@@ -1,6 +1,6 @@
 import { body, param, validationResult } from 'express-validator'
 import { BadRequestError, NotFoundError, UnauthorizedError } from '../Errors/customErrors.js'
-import { PRODUCT_CATEGORY } from '../Utils/Constants.js'
+import { PRODUCT_CATEGORY, POST_CATEGORY, POST_TYPE } from '../Utils/Constants.js'
 import mongoose from 'mongoose'
 import Product from '../Models/productModel.js'
 import User from '../Models/userModel.js'
@@ -23,7 +23,8 @@ const withValidationErrors = (validateValues) =>{
 }
 
 export const validateProductInput = withValidationErrors([
-    body('title').notEmpty().withMessage('title is required'),
+    body('title').notEmpty().withMessage('title is required')
+    .isLength({max: 30}).withMessage('Maximo de caracteres alcanzado'),
     body('price').notEmpty().withMessage('price is required'),
     body('image').notEmpty().withMessage('image is required'),
     body('category').isIn(Object.values(PRODUCT_CATEGORY)).withMessage('invalid category value'),
@@ -37,6 +38,18 @@ export const validateProductInput = withValidationErrors([
     body('description').notEmpty().withMessage('description is required'),
     body('format').notEmpty().withMessage('format is required'),
     body('type').notEmpty().withMessage('type is required'),
+]);
+
+export const validatePostInput = withValidationErrors([
+  body('title').notEmpty().withMessage('Titulo requerido')
+  .isLength({max: 100}).withMessage('Maximo de caracteres alcanzado'),
+  body('content').notEmpty().withMessage('Cuerpo requerido'),
+  body('type').isIn(Object.values(POST_TYPE)).withMessage('invalid post value'),
+  body('category').isIn(Object.values(POST_CATEGORY)).withMessage('invalid category value'),
+]);
+
+export const validateCommentInput = withValidationErrors([
+  body('text').notEmpty().withMessage('Cuerpo requerido')
 ]);
 
 export const validateIdParam = withValidationErrors([

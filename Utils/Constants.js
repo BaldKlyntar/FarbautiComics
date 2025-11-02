@@ -15,3 +15,22 @@ export const GENRE_CATEGORY = {
     COMEDIA: 'Comedia',
     
 }
+
+export const POST_CATEGORY = {
+    DISCUSION: 'Discusion',
+    RECOMENDACION: 'Recomendacion',
+    NOTICIA: 'Noticia',
+    RESEÑA: 'Reseña',
+    DUDA: 'Duda',
+    FANART: 'Fanart'
+
+}
+
+export const POST_TYPE = {
+    PELICULA: 'Pelicula',
+    SERIES: 'Series',
+    COMIC: 'Comic',
+    MANGA: 'Manga',
+    COLECCIONISMO: 'Coleccionismo',
+    ANIME: 'Anime'
+}

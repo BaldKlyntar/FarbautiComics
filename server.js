@@ -34,6 +34,7 @@ app.use(express.json());
 import productRouter from './Routes/productRouter.js'
 import authRouter from './Routes/authRouter.js'
 import userRouter from './Routes/userRouter.js'
+import postRouter from './Routes/postRouter.js'
 
 
 
@@ -60,6 +61,7 @@ app.use(express.static(path.resolve(__dirname, "./public/uploads")));
 app.use('/api/v1/products',  productRouter);
 app.use('/api/v1/users', authenticateUser, userRouter);
 app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/post', postRouter);
 
 
 

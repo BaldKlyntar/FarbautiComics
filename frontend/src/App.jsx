@@ -15,6 +15,8 @@ import {
   EditProduct,
   AllProduct,
   UserSettings,
+  ForumPage,
+  PostPage
   
 } from './Pages'
 import { Marvel } from './Components/Banners/Marvel/Marvel'
@@ -28,6 +30,7 @@ import { loader as Profileloader } from './Components/ProfilePageComponent/Profi
 import { action as addproductAction } from './Components/AddProductComponent/AddProductComponent'
 import {loader as adminLoader } from './Components/SideBar/SideBar'
 import { loader as allproductLoader } from './Components/AllProductComponent/AllProductComponent'
+import { action as PostAction } from './Components/ForumComponents/PostComponent/PostComponent'
 
 
 
@@ -93,6 +96,15 @@ const router = createBrowserRouter([
       {
         path: "category/animanga",
         element: <ShopCategoryPage category="animanga" banner={<Animanga/>} />,
+      },
+      {
+        path: "forum",
+        element: <ForumPage/>,
+        action: PostAction
+      },
+      {
+        path: "post/:postId",
+        element: <PostPage/>
       },
       {
         path: "admin",

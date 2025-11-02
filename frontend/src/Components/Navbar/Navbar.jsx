@@ -67,7 +67,8 @@ const Navbar = () => {
         <li className='link' ><Link style={{textDecoration: 'none', color: 'black'}} to='/category/dc'>DC</Link></li>
         <li className='link' ><Link style={{textDecoration: 'none', color: 'black'}} to='/category/miscellaneous'>Misceláneo</Link></li>
         <li className='link' ><Link style={{textDecoration: 'none', color: 'black'}} to='/category/animanga'>Animanga</Link></li>
-        {/*<li className='link' ><Link style={{textDecoration: 'none', color: 'black'}} to='/forum'>Foro</Link></li>*/}
+        {isUser ? <li className='link' ><Link style={{textDecoration: 'none', color: 'black'}} to='/forum'>Foro</Link></li>
+        : <li className='link' ><Link style={{textDecoration: 'none', color: 'black'}} to='/register'>Foro</Link></li>}
         <GiVikingShield size={50} className='ham-dropdown' onClick={dropdown_toggle}/>
         </ul>
         <div className="hamburger">

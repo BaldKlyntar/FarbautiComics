@@ -16,8 +16,19 @@ const storage = multer.diskStorage({
 
   export const checkImageUpload = (req, res, next) => {
     if (!req.file) {
-        return res.status(400).json({ message: 'Image is required 2' });
+        return res.status(400).json({ message: 'Image is required ' });
     }
     req.body.image = req.file.path;
     next();
 };
+
+  export const checkPostImageUpload = (req, res, next) => {
+    if (req.file) {
+      req.body.image = req.file.path;
+      next();
+    }
+    
+    next();
+};
+
+

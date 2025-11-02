@@ -2,7 +2,7 @@ import Product from '../Models/productModel.js'
 import { StatusCodes } from 'http-status-codes'
 
 export const getAllProducts = async (req, res) =>{
-    const products = await Product.find({})
+    const products = await Product.find({}).sort({ createdAt: -1 })
     res.status(StatusCodes.OK).json({products})
 }
 

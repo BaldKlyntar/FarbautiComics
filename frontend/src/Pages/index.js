@@ -12,4 +12,6 @@ export { default as EditProduct } from './EditProduct';
 export { default as AllProduct } from './AllProduct';
 export { default as HomePage } from './HomePage';
 export { default as UserSettings } from './UserSettings';
+export { default as ForumPage } from './ForumPage';
+export { default as PostPage } from './PostPage';
 
