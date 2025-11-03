@@ -8,7 +8,7 @@ const commentSchema = new mongoose.Schema(
         user: {
             type: mongoose.Schema.Types.ObjectId, ref: 'User'
         },
-        text: String,
+        content: String,
         votes:{
             type: Number,
             default: 0
@@ -16,7 +16,10 @@ const commentSchema = new mongoose.Schema(
         downvotes: {
             type: Number,
             default: 0
-        }
+        },
+        votedBy: [{
+            type: mongoose.Schema.Types.ObjectId, ref: 'User'
+        }]
     }
 )
 

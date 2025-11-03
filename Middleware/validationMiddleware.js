@@ -4,6 +4,7 @@ import { PRODUCT_CATEGORY, POST_CATEGORY, POST_TYPE } from '../Utils/Constants.j
 import mongoose from 'mongoose'
 import Product from '../Models/productModel.js'
 import User from '../Models/userModel.js'
+import Post from '../Models/postModel.js'
 
 const withValidationErrors = (validateValues) =>{
     return [validateValues, (req, res, next) => {
@@ -48,8 +49,11 @@ export const validatePostInput = withValidationErrors([
   body('category').isIn(Object.values(POST_CATEGORY)).withMessage('invalid category value'),
 ]);
 
+
+
 export const validateCommentInput = withValidationErrors([
-  body('text').notEmpty().withMessage('Cuerpo requerido')
+  
+  body('content').notEmpty().withMessage('Cuerpo requerido')
 ]);
 
 export const validateIdParam = withValidationErrors([
@@ -59,6 +63,17 @@ export const validateIdParam = withValidationErrors([
       const product = await Product.findById(value)
   
       if(!product) throw new NotFoundError(`no product with id ${value}`)
+      
+    })
+  ])
+
+  export const validatePostIdParam = withValidationErrors([
+    param('id').custom(async (value, { req }) => {
+      const isValidId = mongoose.Types.ObjectId.isValid(value);
+      if(!isValidId) throw new BadRequestError('invalid MongoDB id')
+      const post = await Post.findById(value)
+  
+      if(!post) throw new NotFoundError(`no product with id ${value}`)
       
     })
   ])

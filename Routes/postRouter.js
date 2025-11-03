@@ -5,8 +5,10 @@ import {
     getAllComment,
     getAllPosts,
     getPost,
+    votePost,
+    downVotePost
 } from '../Controllers/postControllers.js'
-import { validateCommentInput, validateIdParam, validatePostInput } from '../Middleware/validationMiddleware.js';
+import { validateCommentInput, validatePostIdParam, validatePostInput } from '../Middleware/validationMiddleware.js';
 import { authorizePermissions, authenticateUser} from '../Middleware/authMiddleware.js';
 import upload from '../Middleware/multerMiddleware.js';
 import { checkPostImageUpload } from '../Middleware/multerMiddleware.js';
@@ -15,8 +17,8 @@ import { checkPostImageUpload } from '../Middleware/multerMiddleware.js';
 const router = Router()
 
 router.get('/allposts', getAllPosts);
-router.get('/allComment', getAllComment);
-router.get('/:id', validateIdParam, getPost);
+router.get('/:id/allcomment', authenticateUser, getAllComment);
+router.get('/:id', validatePostIdParam, authenticateUser, getPost);
 
 router.post(
   '/addpost',
@@ -26,6 +28,8 @@ router.post(
   checkPostImageUpload,
   addPost
 );
-router.post('/addcomment', validateCommentInput, authenticateUser, addComment);
+router.post('/:id/addcomment',validateCommentInput, authenticateUser,   addComment);
+router.post('/postvote/:id', authenticateUser, votePost)
+router.post('/downvote/:id', authenticateUser, downVotePost)
 
 export default router

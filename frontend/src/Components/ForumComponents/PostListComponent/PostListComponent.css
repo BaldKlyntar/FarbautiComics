@@ -3,6 +3,8 @@
     width: fit-content;
     align-self:auto;
     height: 80vh;
+    overflow-y: scroll;
+    padding: 10px;
 }
 
 .post-list-item{
@@ -12,6 +14,7 @@
     width: 800px;
     height: 255px;
     cursor: pointer;
+    margin-bottom: 15px;
 }
 
 .post-list-item:hover{

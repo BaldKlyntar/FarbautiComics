@@ -31,6 +31,7 @@ import { action as addproductAction } from './Components/AddProductComponent/Add
 import {loader as adminLoader } from './Components/SideBar/SideBar'
 import { loader as allproductLoader } from './Components/AllProductComponent/AllProductComponent'
 import { action as PostAction } from './Components/ForumComponents/PostComponent/PostComponent'
+import { action as CommentAction } from './Components/GetPostComponents/GetPostComponent'
 
 
 
@@ -104,7 +105,8 @@ const router = createBrowserRouter([
       },
       {
         path: "post/:postId",
-        element: <PostPage/>
+        element: <PostPage/>,
+        action: CommentAction
       },
       {
         path: "admin",

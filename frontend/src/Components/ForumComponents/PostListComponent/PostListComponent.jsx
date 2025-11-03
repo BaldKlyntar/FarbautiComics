@@ -6,14 +6,16 @@ import { GiBrokenAxe } from "react-icons/gi";
 import { GiRuneStone } from "react-icons/gi";
 import customFetch from '../../../Utils/customFetch';
 import { useActionData} from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 
-const PostListComponent = () => {
+const PostListComponent = ({
+  selectedCategories,
+  selectedTypes,
+  searchTerm
+}) => {
 
     const actionData = useActionData();
-
-
-
     const [all_posts, setAll_Posts] = useState([]);
     const [isLoading, setIsLoading] = useState(true); 
 
@@ -35,18 +37,39 @@ const PostListComponent = () => {
           fetchAllPosts();
         }, []);
 
-            useEffect(() => {
+        useEffect(() => {
         if (actionData?.reload){
             fetchAllPosts();
         }
-    }, [actionData])
+        }, [actionData])
+
+        const filteredPosts = all_posts.filter((post) => {
+          const matchesCategory =
+            selectedCategories.length === 0 || selectedCategories.includes(post.category);
+          const matchesType =
+            selectedTypes.length === 0 || selectedTypes.includes(post.type)
+          const matchesSearch =
+            searchTerm === '' || post.title.toLowerCase().includes(searchTerm.toLowerCase());
+
+          return matchesCategory && matchesType && matchesSearch;
+        })
+
+        all_posts.forEach(post => {
+  console.log({
+    title: post.title,
+    type: post.type,
+    category: post.category,
+    matchesCategory: selectedCategories.includes(post.category),
+    matchesType: selectedTypes.includes(post.type)
+  });
+});
 
         
 
   return (
     <div className="post-list-component-background">
-        {all_posts.map((post) => {
-            return<><div  className="post-list-item" >
+        {filteredPosts.map((post) => {
+            return<Link style={{textDecoration: 'none', color: 'black'}}  to={`/post/${post._id}`}><div  className="post-list-item" >
             <div className="post-item-header">
                 <h1>{post.title}</h1>
                 <div className="post-item-author">
@@ -72,7 +95,7 @@ const PostListComponent = () => {
                     </div>
                 </div>
             </div>
-        </div></>
+        </div></Link>
         })}
  
     </div>

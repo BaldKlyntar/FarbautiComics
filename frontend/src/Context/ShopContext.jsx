@@ -164,6 +164,28 @@ const ShopContextProvider = (props) => {
       
     }
 
+    const votePost = async (postId) => {
+      try{
+        await customFetch.post(`/post/postvote/${postId}`)
+      } catch(error){
+        toast.error(error?.response?.data?.msg);
+        return error
+
+      }
+    }
+
+    const downvotePost = async (postId) => {
+      try {
+
+        await customFetch.post(`/post/downvote/${postId}`)
+        
+      } catch (error) {
+        toast.error(error?.response?.data?.msg);
+        return error
+        
+      }
+    }
+
     const viewProduct = async (productId) => {
       try{
         await customFetch.post(`/users/addview/${productId}`)
@@ -191,7 +213,9 @@ const ShopContextProvider = (props) => {
       fetchAllProducts,
       removeFavorites,
       removeRead,
-      removeWishlist
+      removeWishlist,
+      votePost,
+      downvotePost
     };
 
     return(

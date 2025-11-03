@@ -31,7 +31,19 @@ const postSchema = new mongoose.Schema(
         comments: [{
             type: mongoose.Schema.Types.ObjectId, ref: 'Comment'
         }],
-        postDate: String
+        postDate: String,
+        votedBy: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref:"User"
+        }
+
+        ],
+        downvotedBy: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref:"User"
+        }
+
+        ]
     }
 );
 
